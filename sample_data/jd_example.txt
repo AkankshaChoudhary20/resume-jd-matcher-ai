@@ -1,0 +1,42 @@
+Senior Backend Engineer
+Beacon Cloud Systems
+
+ABOUT THE ROLE
+We are looking for a Senior Backend Engineer to help design, build, and
+scale the services powering our platform. You'll work closely with our
+Product and Data teams to ship reliable, well-tested APIs and internal
+tools.
+
+RESPONSIBILITIES
+- Design and build REST APIs and internal services primarily in Python
+  (Django or FastAPI).
+- Own data modeling and query performance for our PostgreSQL and
+  DynamoDB data stores.
+- Deploy and operate services on AWS using Docker and Kubernetes.
+- Write and maintain infrastructure as code using Terraform.
+- Build and maintain CI/CD pipelines (Jenkins or GitHub Actions).
+- Collaborate cross-functionally with Product Management and Data Science
+  on new feature rollouts, including basic machine learning-powered
+  features.
+- Contribute to system design discussions and participate in code review.
+- Write unit tests and integration tests; champion test driven development
+  practices across the team.
+- Occasionally build small internal frontend tools using React and
+  TypeScript.
+
+REQUIREMENTS
+- 4+ years of professional software engineering experience.
+- Strong experience with Python and at least one web framework (Django,
+  Flask, or FastAPI).
+- Solid SQL and relational database experience (PostgreSQL preferred).
+- Experience with Docker; Kubernetes experience is a strong plus.
+- Familiarity with AWS or another major cloud provider (Azure, Google
+  Cloud Platform).
+- Experience with Git-based workflows and code review.
+- Comfort working in an Agile/Scrum environment.
+- Bonus: experience with GraphQL, Terraform, React, TypeScript, or basic
+  machine learning / data science tooling (pandas, scikit-learn).
+
+WHAT WE OFFER
+Competitive salary, remote-friendly culture, and a strong focus on
+mentoring and career growth.
