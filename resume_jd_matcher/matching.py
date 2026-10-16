@@ -138,7 +138,8 @@ def compute_similarity(resume_text: str, jd_text: str) -> float:
     if not jd_text or not jd_text.strip():
         return 0.0
 
-    vectorizer = TfidfVectorizer(stop_words="english")
+    # Preserve language names such as C++ and C#, and single-letter skills.
+    vectorizer = TfidfVectorizer(stop_words="english", token_pattern=r"(?u)\b\w+(?:\+\+|#)?")
     try:
         tfidf_matrix = vectorizer.fit_transform([resume_text, jd_text])
     except ValueError:
