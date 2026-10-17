@@ -121,7 +121,7 @@ def extract_terms(text: str) -> set[str]:
                 continue
             if len(phrase) < 5:
                 continue
-            found.add(phrase.lower())
+            found.add(" ".join(phrase.lower().split()))
 
     return found
 
@@ -197,3 +197,4 @@ def match(resume_text: str, jd_text: str) -> MatchResult:
         resume_terms=sorted(resume_terms),
         jd_terms=sorted(jd_terms),
     )
+
