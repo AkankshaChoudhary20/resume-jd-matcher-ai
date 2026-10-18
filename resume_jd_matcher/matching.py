@@ -76,7 +76,7 @@ def _skill_regex(skill: str) -> re.Pattern:
     escaped = re.escape(skill)
     # Allow the internal whitespace to match one-or-more whitespace chars.
     escaped = escaped.replace(r"\ ", r"\s+")
-    return re.compile(rf"(?<![a-zA-Z0-9]){escaped}s?(?![a-zA-Z0-9])")
+    return re.compile(rf"(?<![a-zA-Z0-9+#]){escaped}s?(?![a-zA-Z0-9+#])")
 
 
 _SKILL_PATTERNS = {skill: _skill_regex(skill) for skill in _SORTED_SKILLS}
