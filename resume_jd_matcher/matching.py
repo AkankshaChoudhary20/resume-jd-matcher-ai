@@ -138,8 +138,9 @@ def compute_similarity(resume_text: str, jd_text: str) -> float:
     if not jd_text or not jd_text.strip():
         return 0.0
 
-    # Preserve language names such as C++ and C#, and single-letter skills.
-    vectorizer = TfidfVectorizer(stop_words="english", token_pattern=r"(?u)\b\w+(?:\+\+|#)?")
+    # Preserve C++, C#, single-letter skills, and dotted names such as
+    # Node.js, ASP.NET and .NET as distinct technology tokens.
+    vectorizer = TfidfVectorizer(stop_words="english", token_pattern=r"(?u)(?<![\w.])(?:\.\w+|\w+(?:\.\w+)*)(?:\+\+|#)?")
     try:
         tfidf_matrix = vectorizer.fit_transform([resume_text, jd_text])
     except ValueError:
