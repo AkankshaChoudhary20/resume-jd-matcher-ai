@@ -78,7 +78,7 @@ def run(argv: list[str] | None = None) -> int:
     try:
         resume_text = _read_text_file(args.resume)
         jd_text = _read_text_file(args.jd)
-    except FileNotFoundError as e:
+    except OSError as e:
         print(f"Error: {e}", file=sys.stderr)
         return 1
 
