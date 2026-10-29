@@ -82,6 +82,11 @@ def run(argv: list[str] | None = None) -> int:
         print(f"Error: {e}", file=sys.stderr)
         return 1
 
+    for label, text in (("Resume", resume_text), ("Job description", jd_text)):
+        if not text.strip():
+            print(f"Error: {label} file must contain non-whitespace text.", file=sys.stderr)
+            return 1
+
     result = matching.match(resume_text, jd_text)
 
     print("Resume / Job Description Match Analysis")
