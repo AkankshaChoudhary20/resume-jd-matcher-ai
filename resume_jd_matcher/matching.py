@@ -53,11 +53,11 @@ _SORTED_SKILLS = sorted(set(s.lower() for s in KNOWN_SKILLS), key=len, reverse=T
 # an uppercase letter (or be all-caps, incl. acronyms with digits like
 # "S3" or "OAuth2" won't fully match here but simple acronyms like "AWS"
 # will via KNOWN_SKILLS / this regex as a single-cap-word fallback below).
-# The separator is restricted to spaces/tabs (NOT newlines) and the chain
+# Unicode whitespace is accepted within each line, and the chain
 # is capped at 5 words so section headers / running prose don't get
 # swallowed into one giant multi-line "phrase".
 _CAP_PHRASE_RE = re.compile(
-    r"\b([A-Z][a-zA-Z0-9+.#]*(?:[ \t]+[A-Z][a-zA-Z0-9+.#]*){1,4})\b"
+    r"\b([A-Z][a-zA-Z0-9+.#]*(?:[^\S\r\n]+[A-Z][a-zA-Z0-9+.#]*){1,4})\b"
 )
 
 _WORD_RE = re.compile(r"[a-zA-Z0-9+#.]+")
