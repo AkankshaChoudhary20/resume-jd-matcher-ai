@@ -31,7 +31,7 @@ def _read_text_file(path: str) -> str:
             "attempting to read it as plain text anyway.",
             file=sys.stderr,
         )
-    return p.read_text(encoding="utf-8", errors="replace")
+    return p.read_text(encoding="utf-8-sig", errors="replace")
 
 
 def build_arg_parser() -> argparse.ArgumentParser:
