@@ -31,7 +31,7 @@ def _read_text_file(path: str) -> str:
             "attempting to read it as plain text anyway.",
             file=sys.stderr,
         )
-    return p.read_text(encoding="utf-8-sig", errors="replace")
+    return p.read_text(encoding="utf-8-sig")
 
 
 def build_arg_parser() -> argparse.ArgumentParser:
@@ -78,7 +78,7 @@ def run(argv: list[str] | None = None) -> int:
     try:
         resume_text = _read_text_file(args.resume)
         jd_text = _read_text_file(args.jd)
-    except OSError as e:
+    except (OSError, UnicodeError) as e:
         print(f"Error: {e}", file=sys.stderr)
         return 1
 
