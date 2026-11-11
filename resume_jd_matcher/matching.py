@@ -35,6 +35,7 @@ skills_data.KNOWN_SKILLS).
 from __future__ import annotations
 
 import re
+import unicodedata
 from dataclasses import dataclass, field
 
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -64,7 +65,7 @@ _WORD_RE = re.compile(r"[a-zA-Z0-9+#.]+")
 
 
 def _normalize(text: str) -> str:
-    return text.lower().strip()
+    return unicodedata.normalize("NFKC", text).lower().strip()
 
 
 def _skill_regex(skill: str) -> re.Pattern:
@@ -142,7 +143,7 @@ def compute_similarity(resume_text: str, jd_text: str) -> float:
     # Node.js, ASP.NET and .NET as distinct technology tokens.
     vectorizer = TfidfVectorizer(stop_words="english", token_pattern=r"(?u)(?<![\w.])(?:\.\w+|\w+(?:\.\w+)*)(?:\+\+|#)?")
     try:
-        tfidf_matrix = vectorizer.fit_transform([resume_text, jd_text])
+        tfidf_matrix = vectorizer.fit_transform([_normalize(resume_text), _normalize(jd_text)])
     except ValueError:
         # Happens if, after removing stopwords, there's no vocabulary left
         # (e.g. both docs are only stopwords/punctuation).
