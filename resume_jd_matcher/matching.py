@@ -35,6 +35,7 @@ skills_data.KNOWN_SKILLS).
 from __future__ import annotations
 
 import re
+import unicodedata
 from dataclasses import dataclass, field
 
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -137,6 +138,9 @@ def compute_similarity(resume_text: str, jd_text: str) -> float:
         return 0.0
     if not jd_text or not jd_text.strip():
         return 0.0
+
+    resume_text = unicodedata.normalize("NFC", resume_text)
+    jd_text = unicodedata.normalize("NFC", jd_text)
 
     # Preserve C++, C#, single-letter skills, and dotted names such as
     # Node.js, ASP.NET and .NET as distinct technology tokens.
